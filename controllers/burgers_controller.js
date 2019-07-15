@@ -13,7 +13,8 @@ router.get("/", function(req, res) {
 });
 
 router.post("/api/burgers", function(req, res) {
-    burger.createOne(["burger_name","burger_calories"], [req.body.name,req.body.calories], function(result) {
+    console.log("input", req.body)
+    burger.createOne(["burger_name", "burger_calories"], [req.body.burger_name, req.body.burger_calories], function(result) {
         // Send back the ID of the new quote
         res.json({ id: result.insertId });
     });
@@ -24,7 +25,7 @@ router.put("/api/burgers/:id", function(req, res) {
   
     console.log("condition", condition);
   
-    cat.update(
+    burger.updateOne(
         {
             devoured: req.body.devoured
         },
